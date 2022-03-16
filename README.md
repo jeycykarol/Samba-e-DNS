@@ -283,7 +283,7 @@ O nosso serviço de compartilhamneto (SAMBA), já foi instalado e configurado, a
    
    Observe a imagem, tanto a pasta criada por mim, quanto a criada pelo professor, foram criadas e podem ser visualizadas via terminal!
    
-   [](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/img29.jpg)
+   ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/img29.jpg)
    
 VIVA!!! O SAMBA funcionou!!!! 
 
