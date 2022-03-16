@@ -8,7 +8,7 @@
 # ROTEIRO de INSTALAÇÂO SAMBA & DNS
 > Neste repositório encontra-se o roteiro de instalação, configuração e testes do serviço de compartilhamento do Linux (o SAMBA) e do sistema de nomes de domínio (DNS)
 
-DICA: não traduza a página para o protuguês, algumas palavras aparecem erradas, deixe no inglês mesmo!!!
+DICA: não traduza a página para o português, algumas palavras aparecem erradas, deixe no inglês mesmo!!!
 
 
 # Sumário
@@ -121,7 +121,7 @@ Cuidado! Verique se é esse caminho da imagem abaixo:**
 - **Até agora a única coisa que fizemos foi a instalação do serviço, agora precisamos **configurá-lo**!!!!**
   **Para isso prescisamos do arquivo de configuração (que é o *smb.conf*), para fazer o backup do mesmo executamos o comando ```sudo cp/etc/samba/smb.conf{,.backup}```**
   
-  Perceba o antes e o depois da execuçao do comando, note que o arquivo de babckup foi criado!
+  Perceba o antes e o depois da execuçao do comando, note que o arquivo de backup foi criado!
   
   ![ifconfig](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/img12.jpg)
   
@@ -162,7 +162,7 @@ Cuidado! Verique se é esse caminho da imagem abaixo:**
 
 - **No arquivo de configuração colocamos que a área [public] estava na pasta */samba/public*, se verificarmos (*ls -la*) ainda não possuímos esta pasta, portanto deveremos criá-la (na RAIZ da VM). Utilize o comando ```sudo mkdir samba```, depois verifique se a pasta foi criada usando o comando ```ls -la```:**
 
-  > Deve aparecer um saída como na imagem abaixo, que mostra a pasta na RAIZ da VM:
+  > Deve aparecer uma saída como na imagem abaixo, que mostra a pasta na RAIZ da VM:
 
   ![ifconfig](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/img28.jpg)
 
@@ -195,7 +195,7 @@ Cuidado! Verique se é esse caminho da imagem abaixo:**
    
    ![ifconfig](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/img22.jpg)
    
-   Para verficar os grupos que nossa VM possui é só usar o comando ```getent group```, com esse comando você verifica os grupos e os usuários deles, use esse comando agoa e você verá que não existe nenhum usuário no grupo *sambshare*.
+   Para verficar os grupos que nossa VM possui é só usar o comando ```getent group```, com esse comando você verifica os grupos e os usuários deles, use esse comando agora e você verá que não existe nenhum usuário no grupo *sambshare*.
    
 - **Lembra do arquivo de configuração do samba (o *smb.conf*)? Lembra da área [public]? Agora deveremos modificá-la, para tornar válidos somente os usuários pertencentes ao grupo *sambashare*. Para isso entre no arquivo de configuração usando o comando ```sudo nano /etc/samba/smb.conf```.**
    
@@ -205,7 +205,7 @@ Cuidado! Verique se é esse caminho da imagem abaixo:**
    
    ![ifconfig](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/img23.jpg)
    
-   Depois das configurações lembre-se de reiniar o serviço (```sudo systemctl restart smbd```) e verficar seu funcionamento (```sudo systemctl status smbd```)!
+   Depois das configurações lembre-se de reinciar o serviço (```sudo systemctl restart smbd```) e verficar seu funcionamento (```sudo systemctl status smbd```)!
 
 - Pronto! Agora os usuários válidos são apenas os do grupo *sambashare*. Contudo, lembremos que ainda não há usuários neste grupo (```getent group```) - use o comando para verificar. 
 
@@ -248,20 +248,20 @@ O nosso serviço de compartilhamneto (SAMBA), já foi instalado e configurado, a
 **DESCRIÇÂO:** Esse teste será realizado em uma máquina Windows. Iremos salvar uma pasta nos samba através do host local com acesso via VPN ao laboratório da disciplina (labredes). Veja o passo a passo do teste:
 
 1. **Ligue sua VPN e conecte-se a sua VM via terminal ssh (usei o PuTTy)**
-2. **Vá até o Windows Explorer e na barra de pesquisa digite o IP da sua VM, nesse formato: *\\10.9.14.114***
+2. **Vá até o Windows Explorer e na barra de pesquisa digite o IP da sua VM, nesse formato: *\\\10.9.14.114***
    
-   [](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/testando_o_samba/testando2.jpg)
-   [](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/testando_o_samba/testando3.jpg)
+   ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/testando_o_samba/testando2.jpg)
+   ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/testando_o_samba/testando3.jpg)
    
    Verifique se você consegue ver as pastas. Se sim, você conseguiu se comunicar com sua VM, porém, ainda NÃO testou o SAMBA - mas já é uma vitoriazinha :)
    
-   [](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/testando_o_samba/testando4.jpg)
+   ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/testando_o_samba/testando4.jpg)
    
 3. **Agora iremos testar o SAMBA!!! Para isso clique na pasta *public***
    
    - Quando você clicar deverá aparcer uma tela de login como na imagem a seguir:
    
-   [](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/testando_o_samba/testando5.jpg)
+   ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/testando_o_samba/testando5.jpg)
    
    - Agora é o grande momento do teste!!! Lembra que eu pedi para você anotar as informações de login? Vamos utilizá-las agora! Use o nome do usuário criado e a senha que você criou ao utilizar o comando ```sudo smbpasswd -a aluno```
    
@@ -271,11 +271,11 @@ O nosso serviço de compartilhamneto (SAMBA), já foi instalado e configurado, a
    
    *OBS: a minha (public) já tinha uma pasta (como você pode ver na imagem a seguir), porque o professor criou na hora da aula. SIM, ele testou ao vivo, já merecia um 10, não? :) Mas irei criar uma pasta também para que vocês vejam a mudança!*
    
-   [](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/testando_o_samba/testando6.jpg)
+   ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/testando_o_samba/testando6.jpg)
    
    - Para criar a pasta é muito simples, e como criar qualquer outra pasta normalmente!
    
-   [](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/testando_o_samba/testando7.jpg)
+   ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/testando_o_samba/testando7.jpg)
    
 5. **Verificando pasta criada no terminal**
 
