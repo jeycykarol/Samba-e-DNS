@@ -8,6 +8,8 @@
 # ROTEIRO de INSTALAÇÂO SAMBA & DNS
 > Neste repositório encontra-se o roteiro de instalação, configuração e testes do serviço de compartilhamento do Linux (o SAMBA) e do sistema de nomes de domínio (DNS)
 
+DICA: não traduza a página para o protuguês, algumas palavras aparecem erradas, deixe no inglês mesmo!!!
+
 
 # Sumário
 
@@ -22,7 +24,7 @@
    - [ ] 8.1. Testes dig, nslookup e ping; 
    - [X] 8.2. Gravando um arquivo no SAMBA;
    - [ ] 8.3. Configuração da interface do host local para usar o DNS;
-- [ ] 9. Referências;
+- [X] 9. Referências;
 
 
 # 1. Introdução:
@@ -212,6 +214,8 @@ Cuidado! Verique se é esse caminho da imagem abaixo:**
   > DICA: para deixar os campos em branco aperte **enter**. E anote em um papel as informações de login e senha, para que você não esqueça!!!!!
 
 - **Depois de criar o usuário do S.O (Sistema Operacional), agora deveremos vinculá-lo ao samba, para isso use o comando ```sudo smbpasswd -a aluno```, esse comando irá pedir uma senha, essa deverá ser a senha de acesso para a pasta public, então anote!!!!**
+
+Obs.: essa senha pode ser diferente da senha de usuário, mas recomendo que seja a mesma!
    
 - **Com o comando anterior apenas vinculamos o usuário ao serviço samba, agora deveremos adicionar este usuário ao grupo *sambashare*, para isso use o comando ```sudo usermod -aG sambashare aluno```**
    
@@ -239,6 +243,54 @@ Cuidado! Verique se é esse caminho da imagem abaixo:**
 
 ## 8.2. Gravando um arquivo no SAMBA:
 
+O nosso serviço de compartilhamneto (SAMBA), já foi instalado e configurado, agora deveremos testá-lo. Para isso utilizei os aplicativos [OpenVPN](https://openvpn.net/client-connect-vpn-for-windows/) e o [PuTTy](https://www.putty.org/).
+
+**DESCRIÇÂO:** Esse teste será realizado em uma máquina Windows. Iremos salvar uma pasta nos samba através do host local com acesso via VPN ao laboratório da disciplina (labredes). Veja o passo a passo do teste:
+
+1. **Ligue sua VPN e conecte-se a sua VM via terminal ssh (usei o PuTTy)**
+2. **Vá até o Windows Explorer e na barra de pesquisa digite o IP da sua VM, nesse formato: *\\10.9.14.114***
+   
+   [](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/testando_o_samba/testando2.jpg)
+   [](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/testando_o_samba/testando3.jpg)
+   
+   Verifique se você consegue ver as pastas. Se sim, você conseguiu se comunicar com sua VM, porém, ainda NÃO testou o SAMBA - mas já é uma vitoriazinha :)
+   
+   [](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/testando_o_samba/testando4.jpg)
+   
+3. **Agora iremos testar o SAMBA!!! Para isso clique na pasta *public***
+   
+   - Quando você clicar deverá aparcer uma tela de login como na imagem a seguir:
+   
+   [](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/testando_o_samba/testando5.jpg)
+   
+   - Agora é o grande momento do teste!!! Lembra que eu pedi para você anotar as informações de login? Vamos utilizá-las agora! Use o nome do usuário criado e a senha que você criou ao utilizar o comando ```sudo smbpasswd -a aluno```
+   
+   Se a sua configuração do samba estiver correta você conseguirá acessar a pasta, mas se não conseguir acessar é porque fez alguma coisa errada na configuração, pode ser um errinho muito besta, mas faz toda diferença, se isso acontecer tenha calma e verifique o roteiro novamente!
+   
+   Se você conseguir acessar, você poderá criar arquivos e diretórios na pasta *public*. 
+   
+   *OBS: a minha (public) já tinha uma pasta (como você pode ver na imagem a seguir), porque o professor criou na hora da aula. SIM, ele testou ao vivo, já merecia um 10, não? :) Mas irei criar uma pasta também para que vocês vejam a mudança!*
+   
+   [](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/testando_o_samba/testando6.jpg)
+   
+   - Para criar a pasta é muito simples, e como criar qualquer outra pasta normalmente!
+   
+   [](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/testando_o_samba/testando7.jpg)
+   
+5. **Verificando pasta criada no terminal**
+
+   Criamos a pasta! Quando a criamos a mudança aconteceu automáticamente no nosso diretório */samba/public*, para verificar a criação da pasta vi aterminal ssh, entre na RAIZ da VM (**cd /**) e utilize o comando ```cd /samba/public``` para entrar na pasta *public*, depois use o comando ```ls -la``` para visualizar o conteúdo da pasta.
+   
+   Observe a imagem, tanto a pasta criada por mim, quanto a criada pelo professor, foram criadas e podem ser visualizadas via terminal!
+   
+   [](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/img29.jpg)
+   
+VIVA!!! O SAMBA funcionou!!!! 
+
+TESTE REALIZADO COM SUCESSO!!!
+
+Para verificar o teste feito ao vivo, [clique aqui](https://drive.google.com/file/d/1kxrd80ZgLLE4xC9BoC6RIpldTPrElry5/view?usp=drivesdk)
+
 ## 8.3. Configuração da interface do host local para usar o DNS:
 
 # 9. Referências:
@@ -247,9 +299,9 @@ Cuidado! Verique se é esse caminho da imagem abaixo:**
 
    Para fazer o trabalho precisei de dois aplicativos ***no computador***:
    
-   - **OpenVPN Connect:** OpenVPN é um software para criar redes privadas através de túneis criptogrfados entre computadores. [Aperte aqui para ser levado ao site para baixar o app](https://openvpn.net/client-connect-vpn-for-windows/)
+   - **OpenVPN Connect:** OpenVPN é um software para criar redes privadas através de túneis criptogrfados entre computadores. [Clique aqui para ser levado ao site para baixar o app](https://openvpn.net/client-connect-vpn-for-windows/)
 
-   - **PuTTy:** O PuTTY é um software de emulação de terminal, destinado a suportar o acesso remoto de servidores via shell! (Ele é feinho, mas é muito simples de mexer!). [Aperte aqui para ser levado ao site para baixar o app](https://www.putty.org/)
+   - **PuTTy:** O PuTTY é um software de emulação de terminal, destinado a suportar o acesso remoto de servidores via shell! (Ele é feinho, mas é muito simples de mexer!). [Clique aqui para ser levado ao site para baixar o app](https://www.putty.org/)
 
    ***No celular*** também utilizei a OpenVPN Connect, mas como terminal ssh utilizei o TERMUX. Para baixá-los perquise no Play Store!
 
