@@ -213,9 +213,9 @@ Cuidado! Verique se é esse caminho da imagem abaixo:**
 
   > DICA: para deixar os campos em branco aperte **enter**. E anote em um papel as informações de login e senha, para que você não esqueça!!!!!
 
-- **Depois de criar o usuário do S.O (Sistema Operacional), agora deveremos vinculá-lo ao samba, para isso use o comando ```sudo smbpasswd -a aluno```, esse comando irá pedir uma senha, essa deverá ser a senha de acesso para a pasta public, então anote!!!!**
+- **Depois de criar o usuário do S.O (Sistema Operacional), agora deveremos vinculá-lo ao samba, para isso use o comando ```sudo smbpasswd -a aluno```, esse comando irá pedir uma senha, essa deverá ser a senha de acesso para a pasta public, então anote!!!!** A minha senha foi igual ao nome do meu usuário (aluno2).
 
-Obs.: essa senha pode ser diferente da senha de usuário, mas recomendo que seja a mesma!
+Obs.: essa senha pode ser diferente da senha de usuário, mas recomendo que seja a mesma! 
    
 - **Com o comando anterior apenas vinculamos o usuário ao serviço samba, agora deveremos adicionar este usuário ao grupo *sambashare*, para isso use o comando ```sudo usermod -aG sambashare aluno```**
    
@@ -259,7 +259,7 @@ O nosso serviço de compartilhamneto (SAMBA), já foi instalado e configurado, a
    
 3. **Agora iremos testar o SAMBA!!! Para isso clique na pasta *public***
    
-   - Quando você clicar deverá aparcer uma tela de login como na imagem a seguir:
+   - Quando você clicar deverá aparecer uma tela de login como na imagem a seguir:
    
    ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/testando_o_samba/testando5.jpg)
    
@@ -269,17 +269,17 @@ O nosso serviço de compartilhamneto (SAMBA), já foi instalado e configurado, a
    
    Se você conseguir acessar, você poderá criar arquivos e diretórios na pasta *public*. 
    
-   *OBS: a minha (public) já tinha uma pasta (como você pode ver na imagem a seguir), porque o professor criou na hora da aula. SIM, ele testou ao vivo, já merecia um 10, não? :) Mas irei criar uma pasta também para que vocês vejam a mudança!*
+   *OBS: a minha (public) já tinha uma pasta (como você pode ver na imagem a seguir), porque o professor criou na hora da aula. SIM, ele testou ao vivo, já merecia um 10, não? :) Mas irei criar uma pasta também para que vocês vejam a mudança :)*
    
    ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/testando_o_samba/testando6.jpg)
    
-   - Para criar a pasta é muito simples, e como criar qualquer outra pasta normalmente!
+   - Para criar a pasta é muito simples, é como criar qualquer outra pasta normalmente!
    
    ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/samba/samba/testando_o_samba/testando7.jpg)
    
 5. **Verificando pasta criada no terminal**
 
-   Criamos a pasta! Quando a criamos a mudança aconteceu automáticamente no nosso diretório */samba/public*, para verificar a criação da pasta vi aterminal ssh, entre na RAIZ da VM (**cd /**) e utilize o comando ```cd /samba/public``` para entrar na pasta *public*, depois use o comando ```ls -la``` para visualizar o conteúdo da pasta.
+   Criamos a pasta! Quando a criamos a mudança aconteceu automaticamente no nosso diretório */samba/public*, para verificar a criação da pasta vi aterminal ssh, entre na RAIZ da VM (**cd /**) e utilize o comando ```cd /samba/public``` para entrar na pasta *public*, depois use o comando ```ls -la``` para visualizar o conteúdo da pasta.
    
    Observe a imagem, tanto a pasta criada por mim, quanto a criada pelo professor, foram criadas e podem ser visualizadas via terminal!
    
@@ -289,7 +289,7 @@ VIVA!!! O SAMBA funcionou!!!!
 
 TESTE REALIZADO COM SUCESSO!!!
 
-Para verificar o teste feito ao vivo, [clique aqui](https://drive.google.com/file/d/1kxrd80ZgLLE4xC9BoC6RIpldTPrElry5/view?usp=drivesdk)
+Para verificar o teste feito ao vivo, [clique aqui](https://drive.google.com/file/d/1kxrd80ZgLLE4xC9BoC6RIpldTPrElry5/view?usp=drivesdk) (é um vídeo de 2 min)!
 
 ## 8.3. Configuração da interface do host local para usar o DNS:
 
