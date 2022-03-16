@@ -242,3 +242,31 @@ Cuidado! Verique se é esse caminho da imagem abaixo:**
 ## 8.3. Configuração da interface do host local para usar o DNS:
 
 # 9. Referências:
+
+- **APLICATIVOS:**
+
+   Para fazer o trabalho precisei de dois aplicativos ***no computador***:
+   
+   - **OpenVPN Connect:** OpenVPN é um software para criar redes privadas através de túneis criptogrfados entre computadores. [Aperte aqui para ser levado ao site para baixar o app](https://openvpn.net/client-connect-vpn-for-windows/)
+
+   - **PuTTy:** O PuTTY é um software de emulação de terminal, destinado a suportar o acesso remoto de servidores via shell! (Ele é feinho, mas é muito simples de mexer!). [Aperte aqui para ser levado ao site para baixar o app](https://www.putty.org/)
+
+   ***No celular*** também utilizei a OpenVPN Connect, mas como terminal ssh utilizei o TERMUX. Para baixá-los perquise no Play Store!
+
+- **MATERIAL de APOIO:**
+
+   - Aulas dirigas pelo Prof. Alaelson Jatobá;
+
+     Aula 18 (04/10/2021) - Aula de instalação , configuração e testes do SAMBA;
+     
+     Aula 21 (25/10/2021) e aula 22 (01/11/2021) - Aulas de instalação, configuração e testes do DNS;
+     
+     Obs: não redirecionei ao link do drive, porque não sei se tenho permissão para isso! As aulas mencionadas ficam como referência para utilização do prof. 
+  
+   - [Roteiros do GitHub do Prof. Alaelson Jatobá](https://github.com/alaelson/labredes2021)
+
+- **DOCUMENTO do GITHUB**
+
+Hahaha...não poderia deixar de indicar o site em que aprendi as configurações de markdown, para fazer este documento.
+
+[Como fazer um readme.md bonitão!](https://raullesteves.medium.com/github-como-fazer-um-readme-md-bonit%C3%A3o-c85c8f154f8)
