@@ -5,7 +5,7 @@
 ### Aluna: Jeycy Karollaynny Silva Almeida
 
 
-# ROTEIRO de INSTALAÇÂO SAMBA & DNS
+# ROTEIRO de INSTALAÇÃO SAMBA & DNS
 > Neste repositório encontra-se o roteiro de instalação, configuração e testes do serviço de compartilhamento do Linux (o SAMBA) e do sistema de nomes de domínio (DNS)
 
 > Este documendo é dicado a todos os leigos no assunto! Espero ajudar com algumas dicas, observações e explicação!
@@ -496,7 +496,7 @@ GRAVAÇÃO do [TESTE AO VIVO](https://drive.google.com/file/d/1nSEn1r42uo2jaCnOQ
 
 O nosso serviço de compartilhamneto (SAMBA), já foi instalado e configurado, agora deveremos testá-lo. Para isso utilizei os aplicativos [OpenVPN](https://openvpn.net/client-connect-vpn-for-windows/) e o [PuTTy](https://www.putty.org/).
 
-**DESCRIÇÂO:** Esse teste será realizado em uma máquina Windows. Iremos salvar uma pasta nos samba através do host local com acesso via VPN ao laboratório da disciplina (labredes). Veja o passo a passo do teste:
+**DESCRIÇÃO:** Esse teste será realizado em uma máquina Windows. Iremos salvar uma pasta nos samba através do host local com acesso via VPN ao laboratório da disciplina (labredes). Veja o passo a passo do teste:
 
 1. **Ligue sua VPN e conecte-se a sua VM via terminal ssh (usei o PuTTy)**
 2. **Vá até o Windows Explorer e na barra de pesquisa digite o IP da sua VM, nesse formato: *\\\10.9.14.114***
