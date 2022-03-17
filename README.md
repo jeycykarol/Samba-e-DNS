@@ -267,9 +267,111 @@ O que aparece na tela são os arquivos do bind. Observe esses aquivos ***db***, 
 
 ## 9.1. Testes dig, nslookup e ping:
 
-Para realizar os testes referentes ao DNS é bem simples. Faremos os testes por vez, utilizando cada um dos comando:
+Para realizar os testes referentes ao DNS é bem simples. Faremos os testes por vez, utilizando cada um dos comandos:
 
 - **9.1.1. DIG**
+
+   - ***Para zona reversa:***
+   
+   > OBS: para fazer a pesquisa através de IP via dig, utilize **-x** antes do endereço IP!!!!!
+  
+      - Usando o IP 8.8.8.8 (do google): 
+      
+      ![]()
+      
+      - Usando o IP 10.9.14.1 (de gateway):
+      
+      ![]()
+      
+      - Usando o IP 10.9.14.114 (da ns1 e do samba):
+      
+      ![]()
+      
+      
+   - ***Para zona direta:***
+   
+      - Para o Google:
+  
+      ![]()
+      
+      - Usando o gateway:
+      
+      ![]()
+      
+      - Usando o nameServer1:
+      
+      ![]()
+      
+      - Usando o samba:
+      
+      ![]()
+      
+      
+- **9.1.2. NSLOOKUP**
+
+   - ***Para zona reversa:***
+  
+      - Usando o IP 8.8.8.8 (do google): 
+      
+      ![]()
+      
+      - Usando o IP 10.9.14.1 (de gateway):
+      
+      ![]()
+      
+      - Usando o IP 10.9.14.114 (da ns1 e do samba):
+      
+      ![]()
+      
+      
+   - ***Para zona direta:***
+      
+      - Usando o gateway:
+      
+      ![]()
+      
+      - Usando o nameServer1:
+      
+      ![]()
+      
+      - Usando o samba:
+      
+      ![]()
+      
+- **9.1.3. PING**
+
+   - ***Para zona reversa:***
+  
+      - Usando o IP 8.8.8.8 (do google): 
+      
+      ![]()
+      
+      - Usando o IP 10.9.14.1 (de gateway):
+      
+      ![]()
+      
+      - Usando o IP 10.9.14.114 (da ns1 e do samba):
+      
+      ![]()
+      
+      
+   - ***Para zona direta:***
+   
+      - Para o Google:
+  
+      ![]()
+      
+      - Usando o gateway:
+      
+      ![]()
+      
+      - Usando o nameServer1:
+      
+      ![]()
+      
+      - Usando o samba:
+      
+      ![]()
 
 GRAVAÇÃO do [TESTE AO VIVO](https://drive.google.com/file/d/1nSEn1r42uo2jaCnOQ8PJrXCDuQBkMzAk/view?usp=drivesdk)!!!!!
 
