@@ -8,7 +8,7 @@
 # ROTEIRO de INSTALAÇÂO SAMBA & DNS
 > Neste repositório encontra-se o roteiro de instalação, configuração e testes do serviço de compartilhamento do Linux (o SAMBA) e do sistema de nomes de domínio (DNS)
 
-> Este documendo é dicado a todos os leigos no assunto! Espero ajudar com alguma dicas, observações e explicação!
+> Este documendo é dicado a todos os leigos no assunto! Espero ajudar com algumas dicas, observações e explicação!
 
 DICA: não traduza a página para o português, algumas palavras aparecem erradas, deixe no inglês mesmo!!!
 
@@ -346,7 +346,7 @@ Ante de começar eu mudei o nome da minha máquina para ***ns1*** (nameServer1) 
       
       Depois disse usei o comando ```cat named.conf.local``` para verificar os arquivos db (direto e reverso).
       
-      [](https://github.com/jeycykarol/Samba-e-DNS/blob/main/dns/img17.jpg)    
+      ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/dns/img17.jpg)    
       
       PRONTO!!!
       
