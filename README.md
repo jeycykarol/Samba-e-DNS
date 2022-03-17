@@ -261,7 +261,47 @@ O que aparece na tela são os arquivos do bind. Observe esses aquivos ***db***, 
 
 # 7. Configuração das interfaces de rede dos hosts para os nomes FQDN:
 
+- Para fazermos a configuração das interfaces de rede dos hosts para os nomes FQDN, basta entrarmos no arquivo ***db*** criado, para isso utilizamos o comando ```sudo nano db.jeycy.labredes.ifalarapiraca.local```.
+
+  *Esse arquivo já possui a estrutura que precisamos. O mesmo é do tipo SOA, que é um serviço de autoridade.*
+  >Não esqueça do **.** (ponto final) quando for escrever os nomes FQDN! Além disso, cuidado com a herárquia do arquivo!!!
+
+  Para salvar o arquivo aperte **ctrl+x** e **y**.
+
+  Obs: A imagem abaixo foi 'printada' depois da configuração! Para olhar se o arquivo foi configurado usei comando ```cat db.jeycy.labredes.ifalarapiraca.local```
+
+![]()
+
+- Apenas editamos a configuração! Agora deveremos "falar" para o arquivo ***named.conf.local*** que esse arquivo ***db*** existe. Para isso use o comando ```sudo nano /etc/bind/named.conf.local``` e faça as configurações conforme a imagem:
+
+![]()
+
+- Use o comando ```sudo named-checkconf``` para verficar se a sintaxe do arquivo de configuração do bind está correta (se retonar nada é porque não há erros). 
+Precisamos verificar também a sintaxe da zona, para isso você deve estar na pasta *zones* (```sudo /etc/bind/zones```), para verificar a sintaxe use o comando ```sudo named-checkzone jeycy.labredes.ifalarapiraca.local db.jeycy.labredes.ifalarapiraca.local```. Se não houver erros a saída é um "OK"
+
+  Apenas configuramos os arquivos, mas ainda não salvamos, para fazer isso reinicie o serviço com o comando ```sudo systemctl restart bind9```.
+
+![]()
+
+![]()
+
+Pronto! Nomes FQDN salvos no arquivo de configuração do BIND9 :)
+
 # 8. Configuração da interface do host local para usar o DNS:
+
+Para configurara a interface do host local para que o servidor DNS consultado seja o que cofiguramos devemos entrar na pasta */etc/netplan* com o comando ```cd /etc/netplan```, lá existe o arquivo de configuração das interfaces, o *yaml*, iremos modificá-lo.
+
+Para modificar o arquivo execute o comando ´´´sudo nano /etc/netpan/00-installer-config-yaml´´´. *Lembre-se que não pode usar TAB*
+
+Para que possamos usar o BIND como nosso servidor DNS, deveremos alterar o endereço nameserver da interface ens160. CUIDADO! É o endereço nameserver, não o endereço da interface!!!! 
+
+Altere o *addresses* colocando o IP do seu servidor DNS e na área search coloque nos cochetes [] o nome de domínio que você configurou! 
+
+Para sair do arquico aperte *ctrl+x* e *y*.
+
+Mas para salvar o arquivo de verdade você precisa executar o comando ```sudo netplan apply```.
+
+Pronto agora sua máquina tem o servidor DNS próprio!!! :)
 
 # 9. Sessão de testes:
 
