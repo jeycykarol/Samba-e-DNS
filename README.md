@@ -8,6 +8,8 @@
 # ROTEIRO de INSTALAÇÂO SAMBA & DNS
 > Neste repositório encontra-se o roteiro de instalação, configuração e testes do serviço de compartilhamento do Linux (o SAMBA) e do sistema de nomes de domínio (DNS)
 
+> Este documendo é dicado a todos os leigos no assunto! Espero ajudar com alguma dicas, observações e explicação!
+
 DICA: não traduza a página para o português, algumas palavras aparecem erradas, deixe no inglês mesmo!!!
 
 
@@ -19,8 +21,7 @@ DICA: não traduza a página para o português, algumas palavras aparecem errada
 - [X] 4. Tabela de definições de IPs;
 - [X] 5. Implementação do SAMBA;
 - [X] 6. Implementação do DNS;
-   - [X] 6.1. Configuração das interfaces de rede dos hosts para os nomes FQDN;
-   - [X] 6.2. Configuração da interface do host local para usar o DNS;
+   - [X] 6.1. Configuração da interface do host local para usar o DNS;
 - [X] 7. Sessão de testes:
    - [X] 7.1. Testes dig, nslookup e ping; 
    - [X] 7.2. Gravando um arquivo no SAMBA;
@@ -235,17 +236,23 @@ Obs.: essa senha pode ser diferente da senha de usuário, mas recomendo que seja
 
 # 6. Implementação do DNS:
 
+Ante de começar eu mudei o nome da minha máquina para ***ns1*** (nameServer1) com o comando ```sudo hostnamectl set-hostname ns1```
+
+![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/dns/img1.jpg)
+
 - **Para implementarmos o DNS (Domain Name System), que é o sistema de domínio da internet, precisamos, primeiramente, fazer a atualização dos pacotes que já existem na máquina, para isso use o comando ```sudo apt update```.**
 
+   ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/dns/img2.jpg)
+   
 - **Depois disso podemos instalar o BIND9 (que é o software de servidor de nomes), use o comando a seguir para instalá-lo: ```sudo apt-get install bind9 dnsutils bind9-doc```**
 
-   ![]()
+   ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/dns/img3.jpg)
 
 - **Verifique o funcionamento do serviço com o comando ```sudo systemctl status bind9```**
 
    > Para voltar à linha de comando use a letra ***q***
 
-   ![]()
+   ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/dns/img4.jpg)
 
    Fizemos apenas a instalação, agora precisamos configurá-lo para que ele funcione de fato! Então vamos lá:
 
@@ -255,39 +262,99 @@ Obs.: essa senha pode ser diferente da senha de usuário, mas recomendo que seja
 
    > As zonas especificam o domínio e podem ser zonas de conversão direta (de nome para IP) ou zonas de conversão reversa (de IP para nome).
 
-   ![]()
+   ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/dns/img5.jpg)
 
 - **Devemos criar uma pasta *zones* dentro do diretório *bind*. Para isso utilize o comando ```sudo mkdir /etc/bind/zones```. Depois de executar o comando verifique se a pasta criada já está no diretório *bind* (use o comando ```ls -la /etc/bind``` para isso)**
 
-## 6.1. Configuração das interfaces de rede dos hosts para os nomes FQDN:
+   ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/dns/img6.jpg)
+   
+   - Agora vamos copiar o db vazio com o nome da zona que queremos criar!
 
-- Para fazermos a configuração das interfaces de rede dos hosts para os nomes FQDN, basta entrarmos no arquivo ***db*** criado, para isso utilizamos o comando ```sudo nano db.jeycy.labredes.ifalarapiraca.local```.
+   > EXPLICANDO: Arquivos db são bancos de dados de resolução de nomes, por exemplo, sua VM conhece o nome de uma máquina, mas não sabe o IP, o arquivo db resolverá isso! Cada zona deve ter seu próprio arquivo db.
 
-  *Esse arquivo já possui a estrutura que precisamos. O mesmo é do tipo SOA, que é um serviço de autoridade.*
-  >Não esqueça do **.** (ponto final) quando for escrever os nomes FQDN! Além disso, cuidado com a herárquia do arquivo!!!
+   Para fazer a cópia do db vazio execute o comando ```sudo cp /etc/bind/db.empty /etc/bind/zones/db.jeycy.labredes.ifalarapiraca.local```
 
-  Para salvar o arquivo aperte **ctrl+x** e **y**.
+   Observe que utilizei depois do *db.* o nome de domínio que especifiquei logo no começo do documento. Por isso é tão importante as definições da tabela no início, para não nos perdermos durante o processo!!!!
 
-  Obs: A imagem abaixo foi 'printada' depois da configuração! Para olhar se o arquivo foi configurado usei comando ```cat db.jeycy.labredes.ifalarapiraca.local```
+   > PARA SABER MAIS: O *.local*** significa que o DNS irá resolver apenas endereços internos, da rede local!
 
-![]()
+   Depois de criado o arquivo entre na pasta zones para verificar a criação do arquivo. Para entrar na pasta use ```cd /etc/bind/zones```, e para ver os arquivos da pasta use ```ls -la```
+   
+   ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/dns/img7.jpg)
+   
+   - Agora vamos configurar esse arquivo, para isso use o comando ```sudo nano db.jeycy.labredes.ifalarapiraca.local```
 
-- Apenas editamos a configuração! Agora deveremos "falar" para o arquivo ***named.conf.local*** que esse arquivo ***db*** existe. Para isso use o comando ```sudo nano /etc/bind/named.conf.local``` e faça as configurações conforme a imagem:
+   *O arquivo já possui a estrutura que precisamos, ele é um diretório do tipo SOA, é um serviço autoridade.*
 
-![]()
+   O último ponto (.root.localhost **.** ) deve permanecer sempre, pois é o ponto do root da nossa VM
+   
+   Depois disso utilzei o comando ```cat db.jeycy.labredes.ifalarapiraca.local``` dentro da pasta de zonas para verificar a configuração que realizei no arquivo db.
+   
+   > OBSERVE: nossos nomes FQDN especificados nas tabelas foram criados aqui!!!!
+   
+   ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/dns/img8.jpg)
+   
+   ATENÇÃO: as configurações acima são para zonas diretas (conversão de nome de domínio para IP)
+   
+   - Apenas editamos as configurações, mas ainda não salvamos, para isso devemos "falar" para o arquivo *named.conf.local* (que é o arquivo de configuração do bind) que existe esse arquivo db. Use o comando ```sudo nano /etc/bind/named.conf.local``` Verifique as mudanças que realizei no arquivo:
+   
+   ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/dns/img9.jpg)
+   
+   Agora devemos verificar a sintaxe do arquivoe da zona: 
 
-- Use o comando ```sudo named-checkconf``` para verficar se a sintaxe do arquivo de configuração do bind está correta (se retonar nada é porque não há erros). 
-Precisamos verificar também a sintaxe da zona, para isso você deve estar na pasta *zones* (```sudo /etc/bind/zones```), para verificar a sintaxe use o comando ```sudo named-checkzone jeycy.labredes.ifalarapiraca.local db.jeycy.labredes.ifalarapiraca.local```. Se não houver erros a saída é um "OK"
+   - Use o comando ```sudo named-checkconf``` para verficar se a sintaxe do arquivo de configuração do bind está correta (se não retonar nada é porque não há erros). 
 
-  Apenas configuramos os arquivos, mas ainda não salvamos, para fazer isso reinicie o serviço com o comando ```sudo systemctl restart bind9```.
+    ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/dns/img10.jpg)
+   
+   - Precisamos verificar também a sintaxe da zona, para isso você deve estar na pasta *zones* (```sudo /etc/bind/zones```), para verificar a sintaxe use o comando ```sudo named-checkzone jeycy.labredes.ifalarapiraca.local db.jeycy.labredes.ifalarapiraca.local```. Se não houver erros a saída é um "OK"
 
-![]()
+  - Apenas configuramos os arquivos, mas ainda não salvamos, para fazer isso reinicie o serviço com o comando ```sudo systemctl restart bind9```e depois veja se está funcionando corretamente como o comando  ```sudo systemctl status bind9```
+   
+   ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/dns/img11.jpg)
 
-![]()
+   Percebeu que existe várias saídas *network uncreachable resolving* após utilizar o último comando? É um aviso que informa que não foi possível resolver endereços IPv6. Precisamos usar o comando ```sudo nano /etc/default/named```, para resolver apenas IPv4, pois a nossa zona deve aparcer no log da saída do comando *sudo systemctl status bind9*. O comando ```sudo nano /etc/default/named``` nos levará a um arquivo de configuração, para resolver o problema basta colocar *-4* entre as aspas, para resolver apenas IPv4.
+   
+   ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/dns/img12.jpg)
+   
+   Agora reinicie o bind e veja o status dele:
+   
+   Observe na imagem a seguir que o nome da nossa zona aparece no log da saída do comando!!!!!
+   
+   ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/dns/img13.jpg)
+   
+   - Até agora configuramos apenas a zona direta, nosso DNS Server já resolve nomes, agora precisamos configurar a zona reversa!
 
-Pronto! Nomes FQDN salvos no arquivo de configuração do BIND9 :)
+   - Copie o arquivo de zona reversa usando o coomando ```sudo cp /etc/bind/db.127 /etc/bind/zones/db.10.9.14.rev``` 
+   
+     > Observe que o prefixo de rede (10.9.14.) já está sendo implementado na zona, no arquivo de configuração você perceberá que não precisaremos usar o IP completo da rede apenas os últimos numeros;
+     
+     ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/dns/img14.jpg)
+     
+    - Agora iremos configurar esse arquivo db da zona reversa, para isso use o comando ```sudo nano db 10.9.14.rev```. 
 
-# 6.2. Configuração da interface do host local para usar o DNS:
+     Veja as minhas configurações na imagem a seguir, e se possível compare com as configurações da zona direta para verificar a diferença!
+     
+     ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/dns/img15.jpg)
+     
+    - Apenas editamos as configurações, mas ainda não salvamos, para isso devemos "falar" para o arquivo *named.conf.local* que existe esse arquivo db. Use o comando ```sudo nano /etc/bind/named.conf.local```
+
+      [](https://github.com/jeycykarol/Samba-e-DNS/blob/main/dns/img16.jpg)
+   
+      Depois use o comando ```sudo named-checkconf``` para verficar se a sintaxe do arquivo de configuração do bind está correta (se não retonar nada é porque não há erros). 
+
+      Apenas configuramos os arquivos, mas ainda não salvamos, para fazer isso reinicie o serviço com o comando ```sudo systemctl restart bind9```e depois veja se está funcionando corretamente como o comando  ```sudo systemctl status bind9```
+      
+      Depois disse usei o comando ```cat named.conf.local``` para verificar os arquivos db (direto e reverso).
+      
+      [](https://github.com/jeycykarol/Samba-e-DNS/blob/main/dns/img17.jpg)    
+      
+      PRONTO!!!
+      
+      DNS Server configurado!!!!
+      
+      Para ver o teste navegue até a sessão 7.1. deste documento.
+      
+# 6.1. Configuração da interface do host local para usar o DNS:
 
 Para configurara a interface do host local para que o servidor DNS consultado seja o que cofiguramos devemos entrar na pasta */etc/netplan* com o comando ```cd /etc/netplan```, lá existe o arquivo de configuração das interfaces, o *yaml*, iremos modificá-lo.
 
