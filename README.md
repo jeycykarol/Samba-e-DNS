@@ -18,13 +18,13 @@ DICA: não traduza a página para o português, algumas palavras aparecem errada
 - [X] 3. Tabela de nomes FQDN dos hosts;
 - [X] 4. Tabela de definições de IPs;
 - [X] 5. Implementação do SAMBA;
-- [ ] 6. Implementação do DNS;
-- [ ] 7. Configuração das interfaces de rede;
-- [ ] 8. Sessão de testes:
-   - [ ] 8.1. Testes dig, nslookup e ping; 
-   - [X] 8.2. Gravando um arquivo no SAMBA;
-   - [ ] 8.3. Configuração da interface do host local para usar o DNS;
-- [X] 9. Referências;
+- [X] 6. Implementação do DNS;
+- [X] 7. Configuração das interfaces de rede dos hosts para os nomes FQDN;
+- [X] 8. Configuração da interface do host local para usar o DNS;
+- [X] 9. Sessão de testes:
+   - [X] 9.1. Testes dig, nslookup e ping; 
+   - [X] 9.2. Gravando um arquivo no SAMBA;
+- [X] 10. Referências;
 
 
 # 1. Introdução:
@@ -235,13 +235,39 @@ Obs.: essa senha pode ser diferente da senha de usuário, mas recomendo que seja
 
 # 6. Implementação do DNS:
 
-# 7. Configuração das interfaces de rede:
+- **Para implementarmos o DNS (Domain Name System), que é o sistema de domínio da internet, precisamos, primeiramente, fazera atualização dos pacotes que já existem na máquina, para isso use o comando ```sudo apt update```.**
 
-# 8. Sessão de testes:
+- **Depois disso podemos instalar o BIND9 (que é o software de servidor de nomes), use o comando a seguir para instalá-lo: ```sudo apt-get install bind9 dnsutils bind9-doc```**
 
-## 8.1. Testes dig, nslookup e ping:
+![]()
 
-## 8.2. Gravando um arquivo no SAMBA:
+- **Verifique o funcionamento do serviço com o comando ```sudo systemctl status bind9```**
+
+> Para voltar à linha de comando use a letra ***q***
+
+![]()
+
+Fizemos apenas a instalação, agora precisamos configurá-lo para que ele funcione de fato! Então vamos lá:
+
+- **Vamos entrar no diretório *bind* para isso use o comando ```ls -la /etc/bind```**
+
+O que aparece na tela são os arquivos do bind. Observe esses aquivos ***db***, as zonas são especificadas nesses arquivos. 
+
+> As zonas especificam o domínio e podem ser zonas de conversão direta (de nome para IP) ou zonas de conversão reversa (de IP para nome).
+
+![]()
+
+- **Devemos criar uma pasta *zones* dentro do diretório *bind*. Para isso utilize o comando ```sudo mkdir /etc/bind/zones```. Depois de executar o comando verifique se a pasta criada já está no diretório *bind* (use o comando ```ls -la /etc/bind``` para isso)**
+
+# 7. Configuração das interfaces de rede dos hosts para od nomes FQDN:
+
+# 8. Configuração da interface do host local para usar o DNS:
+
+# 9. Sessão de testes:
+
+## 9.1. Testes dig, nslookup e ping:
+
+## 9.2. Gravando um arquivo no SAMBA:
 
 O nosso serviço de compartilhamneto (SAMBA), já foi instalado e configurado, agora deveremos testá-lo. Para isso utilizei os aplicativos [OpenVPN](https://openvpn.net/client-connect-vpn-for-windows/) e o [PuTTy](https://www.putty.org/).
 
@@ -291,9 +317,7 @@ TESTE REALIZADO COM SUCESSO!!!
 
 Para verificar o teste feito ao vivo, [clique aqui](https://drive.google.com/file/d/1kxrd80ZgLLE4xC9BoC6RIpldTPrElry5/view?usp=drivesdk) (é um vídeo de 2 min)!
 
-## 8.3. Configuração da interface do host local para usar o DNS:
-
-# 9. Referências:
+# 10. Referências:
 
 - **APLICATIVOS:**
 
