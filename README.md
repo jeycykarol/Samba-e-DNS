@@ -299,9 +299,19 @@ Altere o *addresses* colocando o IP do seu servidor DNS e na área search coloqu
 
 Para sair do arquico aperte *ctrl+x* e *y*.
 
-Mas para salvar o arquivo de verdade você precisa executar o comando ```sudo netplan apply```.
+Mas para salvar o arquivo de verdade você precisa executar o comando ```sudo netplan apply```. Verifique o antes e o depois do arquivo *yaml* na imagem
 
 Pronto agora sua máquina tem o servidor DNS próprio!!! :)
+
+![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/dns/Img18.jpg)
+
+Agora utilizemos o comando ```systemd-resolve --status ens160``` para que visualizemos a resolução da interface, perceba que com esse comando podemos visualizar o  IP do DNS Server utilizado pela máquina e seu nome de domínio. No nosso caso deverá aparecer 10.9.14.114 e jeycy.labredes.ifalarapiraca.local
+
+![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/dns/Img20.jpg
+
+Antes de configurar a interface ens160 para utilizar o DNS Server, executei esse comando para observarmos o antes e o depois, observe como estava antes da configuração do arquivo *yaml*:
+
+![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/dns/Img19.jpg)
 
 # 7. Sessão de testes:
 
