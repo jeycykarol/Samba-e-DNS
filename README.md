@@ -267,6 +267,12 @@ O que aparece na tela são os arquivos do bind. Observe esses aquivos ***db***, 
 
 ## 9.1. Testes dig, nslookup e ping:
 
+Para realizar os testes referentes ao DNS é bem simples. Faremos os testes por vez, utilizando cada um dos comando:
+
+- **9.1.1. DIG**
+
+GRAVAÇÃO do [TESTE AO VIVO](https://drive.google.com/file/d/1nSEn1r42uo2jaCnOQ8PJrXCDuQBkMzAk/view?usp=drivesdk)!!!!!
+
 ## 9.2. Gravando um arquivo no SAMBA:
 
 O nosso serviço de compartilhamneto (SAMBA), já foi instalado e configurado, agora deveremos testá-lo. Para isso utilizei os aplicativos [OpenVPN](https://openvpn.net/client-connect-vpn-for-windows/) e o [PuTTy](https://www.putty.org/).
