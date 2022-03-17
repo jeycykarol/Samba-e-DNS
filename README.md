@@ -307,7 +307,7 @@ Pronto agora sua máquina tem o servidor DNS próprio!!! :)
 
 Agora utilizemos o comando ```systemd-resolve --status ens160``` para que visualizemos a resolução da interface, perceba que com esse comando podemos visualizar o  IP do DNS Server utilizado pela máquina e seu nome de domínio. No nosso caso deverá aparecer 10.9.14.114 e jeycy.labredes.ifalarapiraca.local
 
-![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/dns/Img20.jpg
+![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/dns/Img20.jpg)
 
 Antes de configurar a interface ens160 para utilizar o DNS Server, executei esse comando para observarmos o antes e o depois, observe como estava antes da configuração do arquivo *yaml*:
 
