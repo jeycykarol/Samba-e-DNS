@@ -259,7 +259,7 @@ O que aparece na tela são os arquivos do bind. Observe esses aquivos ***db***, 
 
 - **Devemos criar uma pasta *zones* dentro do diretório *bind*. Para isso utilize o comando ```sudo mkdir /etc/bind/zones```. Depois de executar o comando verifique se a pasta criada já está no diretório *bind* (use o comando ```ls -la /etc/bind``` para isso)**
 
-# 7. Configuração das interfaces de rede dos hosts para od nomes FQDN:
+# 7. Configuração das interfaces de rede dos hosts para os nomes FQDN:
 
 # 8. Configuração da interface do host local para usar o DNS:
 
@@ -267,44 +267,44 @@ O que aparece na tela são os arquivos do bind. Observe esses aquivos ***db***, 
 
 ## 9.1. Testes dig, nslookup e ping:
 
-Para realizar os testes referentes ao DNS é bem simples. Faremos os testes por vez, utilizando cada um dos comandos:
+Para realizar os testes referentes ao DNS é bem simples. Faremos os testes por vez, utilizando cada um dos comandos! Usaremos os comandos em cada um dos IP e hosts da tabela FQDN especificada para este trabalho.
 
 - **9.1.1. DIG**
-
-   - ***Para zona reversa:***
    
    > OBS: para fazer a pesquisa através de IP via dig, utilize **-x** antes do endereço IP!!!!!
+
+   - ***Para zona reversa:***
   
       - Usando o IP 8.8.8.8 (do google): 
       
-      ![]()
+      ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/testes_dns/z_reversa/dig1_rev.jpg)
       
       - Usando o IP 10.9.14.1 (de gateway):
       
-      ![]()
+      ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/testes_dns/z_reversa/dig2_rev.jpg)
       
       - Usando o IP 10.9.14.114 (da ns1 e do samba):
       
-      ![]()
+      ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/testes_dns/z_reversa/dig3_rev.jpg)
       
       
    - ***Para zona direta:***
    
       - Para o Google:
   
-      ![]()
+      ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/testes_dns/z_direta/dig1_dirt.jpg)
       
       - Usando o gateway:
       
-      ![]()
+      ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/testes_dns/z_direta/dig2_dirt.jpg)
       
       - Usando o nameServer1:
       
-      ![]()
+      ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/testes_dns/z_direta/dig3_dirt.jpg)
       
       - Usando o samba:
       
-      ![]()
+      ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/testes_dns/z_direta/dig4_dirt.jpg)
       
       
 - **9.1.2. NSLOOKUP**
@@ -313,30 +313,30 @@ Para realizar os testes referentes ao DNS é bem simples. Faremos os testes por 
   
       - Usando o IP 8.8.8.8 (do google): 
       
-      ![]()
+      ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/testes_dns/z_reversa/nsk1_rev.jpg)
       
       - Usando o IP 10.9.14.1 (de gateway):
       
-      ![]()
+      ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/testes_dns/z_reversa/nsk2_rev.jpg)
       
       - Usando o IP 10.9.14.114 (da ns1 e do samba):
       
-      ![]()
+      ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/testes_dns/z_reversa/nsk3_rev.jpg)
       
       
    - ***Para zona direta:***
       
       - Usando o gateway:
       
-      ![]()
+      ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/testes_dns/z_direta/nsk1_dirt.jpg)
       
       - Usando o nameServer1:
       
-      ![]()
+      ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/testes_dns/z_direta/nsk2_dirt.jpg)
       
       - Usando o samba:
       
-      ![]()
+      ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/testes_dns/z_direta/nsk3_dirt.jpg)
       
 - **9.1.3. PING**
 
@@ -344,34 +344,34 @@ Para realizar os testes referentes ao DNS é bem simples. Faremos os testes por 
   
       - Usando o IP 8.8.8.8 (do google): 
       
-      ![]()
+      ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/testes_dns/z_reversa/ping1_rev.jpg)
       
       - Usando o IP 10.9.14.1 (de gateway):
       
-      ![]()
+      ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/testes_dns/z_reversa/ping2_rev.jpg)
       
       - Usando o IP 10.9.14.114 (da ns1 e do samba):
       
-      ![]()
+      ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/testes_dns/z_reversa/ping3_rev.jpg)
       
       
    - ***Para zona direta:***
    
       - Para o Google:
   
-      ![]()
+      ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/testes_dns/z_direta/ping1_dirt.jpg)
       
       - Usando o gateway:
       
-      ![]()
+      ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/testes_dns/z_direta/ping2_dirt.jpg)
       
       - Usando o nameServer1:
       
-      ![]()
+      ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/testes_dns/z_direta/ping3_dirt.jpg)
       
       - Usando o samba:
       
-      ![]()
+      ![](https://github.com/jeycykarol/Samba-e-DNS/blob/main/testes_dns/z_direta/ping4_dirt.jpg)
 
 GRAVAÇÃO do [TESTE AO VIVO](https://drive.google.com/file/d/1nSEn1r42uo2jaCnOQ8PJrXCDuQBkMzAk/view?usp=drivesdk)!!!!!
 
